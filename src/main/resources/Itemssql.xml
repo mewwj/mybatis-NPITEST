@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+      检讨信息维护
+ -->
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 		<mapper namespace="Dao.Iitems">
+            <resultMap type="pojo.AllItems" id="AllItemsResultMap">
+             <result column="id" jdbcType="INTEGER" property="id"/> 
+		     <result column="cusname" jdbcType="VARCHAR" property="cusname"/>
+		     <result column="proname" jdbcType="VARCHAR" property="proname"/>
+		     <result column="stage0" jdbcType="VARCHAR" property="stage0"/>
+		     <result column="stage" jdbcType="VARCHAR" property="stage"/>
+		     <result column="insproject" jdbcType="VARCHAR" property="insproject"/>
+		     <result column="item" jdbcType="VARCHAR" property="item"/>
+		     <result column="items" jdbcType="VARCHAR" property="items"/>
+		     <result column="problems" jdbcType="VARCHAR" property="problems"/>
+		     <result column="filenamea" jdbcType="VARCHAR" property="filenamea"/>
+		     <result column="ng" jdbcType="VARCHAR" property="ng"/>
+		     <result column="defectlevels" jdbcType="VARCHAR" property="defectlevels"/>
+		     <result column="reasons" jdbcType="VARCHAR" property="reasons"/>
+		     <result column="measures" jdbcType="VARCHAR" property="measures"/>
+		      <result column="filenameb" jdbcType="VARCHAR" property="filenameb"/>
+		     <result column="exhibitor" jdbcType="VARCHAR" property="exhibitor"/>
+		     <result column="head" jdbcType="VARCHAR" property="head"/>
+		     <result column="plantime" jdbcType="VARCHAR" property="plantime"/>
+		     <result column="finishtime" jdbcType="VARCHAR" property="finishtime"/>
+		     <result column="confirm" jdbcType="VARCHAR" property="confirm"/>
+		     <result column="affect" jdbcType="VARCHAR" property="affect"/>
+		     <result column="comment" jdbcType="VARCHAR" property="comment"/>
+		     <result column="filenamea" jdbcType="VARCHAR" property="filenamea"/>
+		     <result column="filenameb" jdbcType="VARCHAR" property="filenameb"/>
+		     <result column="pmcomm" jdbcType="VARCHAR" property="pmcomm"/>
+		    </resultMap>
+		    <!-- 插入数据 -->
+		<insert id="insertitemsa"  parameterType="pojo.AllItems">
+    insert into NPI_ALL_messages (cusname,proname,stage0,stage,insproject,item,items,problems,filenamea,ng,defectlevels,exhibitor,plantime)
+     values 
+    <foreach collection="list" item="item" separator=",">
+      (#{item.cusname},#{item.proname},#{item.stage0},#{item.stage},#{item.insproject},#{item.item},#{item.items},#{item.problems},
+       #{item.filenamea},#{item.ng},#{item.defectlevels},#{item.exhibitor},#{item.plantime}) 
+    </foreach>
+  </insert>
+    <!-- 查找所有信息 -->
+  <select id="selectallmessages"  parameterType="int" resultMap="AllItemsResultMap">
+  select * from NPI_ALL_messages WHERE  cusname=(select cusname FROM [dbo].[NPI_ALL_HEAD] WHERE ID=#{_parameter} ) 
+  and proname =(select proname FROM [dbo].[NPI_ALL_HEAD] WHERE ID=#{_parameter}) 
+  </select>
+   <!-- 查找一条信息 -->
+  <select id="selectoneitem"  parameterType="pojo.AllItems" resultMap="AllItemsResultMap">
+  select * from NPI_ALL_messages where ID=#{_parameter}
+  </select>
+  <!-- 查找图片1存储位置 -->
+  <select id="selectonefilename"  parameterType="int" resultType="String" >
+  select filenamea from NPI_ALL_messages where ID=#{_parameter} 
+  </select>
+  <!-- 查找图片2存储位置 -->
+   <select id="selectonefilenameb"  parameterType="int" resultType="String" >
+  select filenameb from NPI_ALL_messages where ID=#{_parameter}
+  </select>
+  <!-- 删除一条数据 -->
+  <delete id="deleteoneitem" parameterType="int">
+    delete from NPI_ALL_messages where ID=#{_parameter}
+  </delete>
+  <!-- 更新一条数据 -->
+  <update id="updateoneitem" parameterType="java.util.List">
+  <foreach collection="list" item="item" separator=",">
+      UPDATE [dbo].[NPI_ALL_messages]
+       SET  [reasons] = #{item.reasons}  ,[measures] = #{item.measures},[filenameb] = #{item.filenameb},
+   			[head] = #{item.head},[finishtime] = #{item.finishtime} WHERE id=#{item.id}
+    </foreach>
+    <!-- 更新页面展示 -->
+  </update>
+  <select id="selectnoconfirmmsg"  parameterType="java.util.List" resultMap="AllItemsResultMap">
+    select * from NPI_ALL_messages where id not in (select id from [dbo].[NPI_ALL_messages] where confirm like '%ok%') 
+       <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+      <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname =#{cusname}</if>
+      <if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname =#{proname}</if>
+        order by plantime
+  </select>
+  <update id="updateexhitemslist" parameterType="java.util.List">
+  <foreach collection="list" item="item" separator=",">
+      UPDATE [dbo].[NPI_ALL_messages]
+      SET [comment] = #{item.comment} ,[confirm] = #{item.confirm},[affect] = #{item.affect}
+      WHERE id=#{item.id}
+    </foreach>
+  </update>
+  <select id="selectnoconfirmmsg2" parameterType="pojo.AllHead" resultMap="AllItemsResultMap">
+   SELECT * from [dbo].[NPI_ALL_messages] WHERE 1=1
+      <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+  </select>
+  <select id="amessageslist" parameterType="pojo.AllHead" resultMap="AllItemsResultMap">
+   SELECT * from [dbo].[NPI_ALL_messages] WHERE 1=1
+      <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+      <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname =#{cusname}</if>
+      <if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname =#{proname}</if>
+  </select>
+  <select id="selectallmsg" parameterType="pojo.AllHead" resultMap="AllItemsResultMap">
+   		SELECT * from [dbo].[NPI_ALL_messages] Where 1=1
+   		 <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+       <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+       <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname =#{cusname}</if>
+       <if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname =#{proname}</if>
+  </select>
+  <delete id="deletebatchitems" >
+    DELETE FROM [dbo].[NPI_ALL_messages] WHERE ID in(
+    <foreach collection="list" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </delete>
+  <!-- PM添加备注 -->
+  <insert id="insertitemcomm" parameterType="pojo.AllHead" >
+     UPDATE NPI_ALL_messages SET pmcomm = #{pmcomm} WHERE id= #{id} 
+  </insert>
+ </mapper>

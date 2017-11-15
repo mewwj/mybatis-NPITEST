@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                王文杰
+      headsqlxml
+      2017、10、10
+-->
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 		<mapper namespace="Dao.Ihead">
+            <resultMap type="pojo.AllHead" id="headresultmap">
+             <result column="id" jdbcType="INTEGER" property="id"/> 
+		     <result column="cusname" jdbcType="VARCHAR" property="cusname"/>
+             <result column="stage0" jdbcType="VARCHAR" property="stage0"/> 
+		     <result column="stage" jdbcType="VARCHAR" property="stage"/>
+		     <result column="proname" jdbcType="VARCHAR" property="proname"/>
+		     <result column="modeltype" jdbcType="VARCHAR" property="modeltype"/>
+		     <result column="trystage" jdbcType="VARCHAR" property="trystage"/>
+		     <result column="trydate" jdbcType="VARCHAR" property="trydate"/>
+		     <result column="trytime" jdbcType="VARCHAR" property="trytime"/>
+		     <result column="team" jdbcType="VARCHAR" property="team"/>
+		     <result column="trialsite" jdbcType="VARCHAR" property="trialsite"/>
+		     <result column="number" jdbcType="INTEGER" property="number"/>
+		     <result column="goodnumber" jdbcType="INTEGER" property="goodnumber"/>
+		     <result column="goodrate" jdbcType="VARCHAR" property="goodrate"/>
+		    
+		    </resultMap>
+		    <!-- 插入数据 -->
+		<insert id="insertheaditems"  parameterType="java.util.List">
+    insert into NPI_ALL_HEAD (stage0,stage,cusname,proname,modeltype,trystage,trydate,trytime,team,trialsite,number,goodnumber,goodrate)
+     values 
+    <foreach collection="list" item="item" separator=",">
+      (#{item.stage0},#{item.stage},#{item.cusname},#{item.proname},#{item.modeltype},#{item.trystage},#{item.trydate},#{item.trytime},
+      #{item.team},#{item.trialsite},#{item.number},#{item.goodnumber},#{item.goodrate}) 
+    </foreach>
+  </insert>
+  
+  <select id="selectheaditems" parameterType="pojo.AllHead" resultMap="headresultmap">
+   SELECT * from NPI_ALL_HEAD WHERE 1=1
+      <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      <if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname =#{proname}</if>
+      <if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+      <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+  </select>
+  
+  <select id="mainheaditems" parameterType="pojo.AllHead" resultMap="headresultmap">
+       SELECT * from NPI_ALL_HEAD WHERE 1=1
+		      <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+		      <if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname =#{proname}</if>
+		      <if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+		      <if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+  </select>
+  
+   <delete id="deletehead" parameterType="int" >
+     DELETE FROM NPI_ALL_HEAD WHERE ID=#{_parameter}
+  </delete>
+  
+  <select id="updatehead" parameterType="int" resultMap="headresultmap">
+     select * FROM NPI_ALL_HEAD WHERE ID=#{_parameter}
+  </select>
+  
+  <update id="updateheaditem"  parameterType="pojo.AllHead">   
+     <foreach collection="list" item="item" separator=",">
+     UPDATE NPI_ALL_HEAD SET stage0=#{item.stage0},stage=#{item.stage},cusname=#{item.cusname},proname=#{item.proname},
+     modeltype=#{item.modeltype},trydate=#{item.trydate},trytime=#{item.trytime},team=#{item.team},trialsite=#{item.trialsite},
+     number=#{item.number},goodnumber=#{item.goodnumber},goodrate=#{item.goodrate} WHERE ID=#{item.id}
+     </foreach>
+  </update>
+  
+ </mapper>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+      检讨信息维护
+ -->
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 		<mapper namespace="Dao.Ilist">
+            <resultMap type="pojo.AllItems" id="ItemsResultMap">
+             <result column="id" jdbcType="INTEGER" property="id"/> 
+		     <result column="cusname" jdbcType="VARCHAR" property="cusname"/>
+		     <result column="proname" jdbcType="VARCHAR" property="proname"/>
+		     <result column="stage0" jdbcType="VARCHAR" property="stage0"/>
+		     <result column="stage" jdbcType="VARCHAR" property="stage"/>
+		     <result column="insproject" jdbcType="VARCHAR" property="insproject"/>
+		     <result column="item" jdbcType="VARCHAR" property="item"/>
+		     <result column="items" jdbcType="VARCHAR" property="items"/>
+		     <result column="problems" jdbcType="VARCHAR" property="problems"/>
+		     <result column="filenamea" jdbcType="VARCHAR" property="filenamea"/>
+		     <result column="ng" jdbcType="VARCHAR" property="ng"/>
+		     <result column="defectlevels" jdbcType="VARCHAR" property="defectlevels"/>
+		     <result column="reasons" jdbcType="VARCHAR" property="reasons"/>
+		     <result column="measures" jdbcType="VARCHAR" property="measures"/>
+		      <result column="filenameb" jdbcType="VARCHAR" property="filenameb"/>
+		     <result column="exhibitor" jdbcType="VARCHAR" property="exhibitor"/>
+		     <result column="head" jdbcType="VARCHAR" property="head"/>
+		     <result column="plantime" jdbcType="VARCHAR" property="plantime"/>
+		     <result column="finishtime" jdbcType="VARCHAR" property="finishtime"/>
+		     <result column="confirm" jdbcType="VARCHAR" property="confirm"/>
+		     <result column="affect" jdbcType="VARCHAR" property="affect"/>
+		     <result column="comment" jdbcType="VARCHAR" property="comment"/>
+		     <result column="filenamea" jdbcType="VARCHAR" property="filenamea"/>
+		     <result column="filenameb" jdbcType="VARCHAR" property="filenameb"/>
+		    </resultMap>
+	<select id="countdesignaspect" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="technologicalaspects" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'工艺方面'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="operationaspects" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="incomingmaterialslaspects" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'来料方面'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="customeraspects" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'客户方面'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="softwaredesignaspect" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'软件方面'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<select id="otheraspects" resultType="int"  parameterType="java.lang.Integer">   
+	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'其他方面'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 机构  SOUNDBAR -->
+	<select id="designinstsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'机构部分' and items='Soundbar'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 机构  WOOFER -->
+	<select id="designinstwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'机构部分' and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 电子  SOUNDBAR -->
+	<select id="designelecsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'电子部分' and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 电子  WOOFER --> 
+	<select id="designelecwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'电子部分' and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 喇叭  SOUNDBAR -->
+	<select id="designhornsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分' and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 喇叭  WOOFER --> 
+	<select id="designhornwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分' and items='WOOFER'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 包装  SOUNDBAR -->
+	<select id="designpacksoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分' and items='Soundbar'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 包装  WOOFER --> 
+	<select id="designpackwooferr" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分' and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 其他  SOUNDBAR -->
+	<select id="designothsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'其他部分' and items='Soundbar'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 设计 其他  WOOFER --> 
+	<select id="designothwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'其他部分' and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 软件   SOUNDBAR -->
+	<select id="softwaresoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'软件方面'  and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 软件  WOOFER --> 
+	<select id="softwarewoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'软件方面'  and items='WOOFER'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 工艺   SOUNDBAR -->
+	<select id="techsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'工艺方面'  and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 工艺  WOOFER --> 
+	<select id="techwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'工艺方面'  and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 作业   SOUNDBAR -->
+	<select id="operasoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='Soundbar'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 作业  WOOFER --> 
+	<select id="operawoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='WOOFER'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 来料   SOUNDBAR -->
+	<select id="incomsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 来料  WOOFER --> 
+	<select id="incomwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='WOOFER'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 客户   SOUNDBAR -->
+	<select id="cusmsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='Soundbar'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!--  客户  WOOFER --> 
+	<select id="cusmwooferlist" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!-- 客户   SOUNDBAR -->
+	<select id="othsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='Soundbar'
+	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	<!--  客户  WOOFER --> 
+	<select id="othwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'  and items='WOOFER'
+	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
+      	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
+      	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
+     	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
+      	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
+	</select>
+	
+ </mapper>
