@@ -31,37 +31,43 @@
 		<br />
 		<form action="/npi.test/HEAD_DoHeadMain" id="mainheadform" method="post">
 		<!-- 表格 -->
-			<div style="margin-left:5cm;padding-top: 1cm; font-size: 15px;">
+			<div style="margin-left:5cm;padding-top: 1cm; font-size: 15px; ">
 				 客户名称：${allmessagescusname}
 				 专案名称：${allmessagesproname}
+				  	<div style="padding-right: 20px; width: 10%;margin-left:80% ;">
+				  		<button class="layui-btn layui-btn-sm">导出</button>
+				  	</div>
 			</div>
 	 	<div  style="margin-left:5%; width:90%;">
 	     <table class="layui-table">
 	     <thead>
 	   		 <tr>
-	      <th lay-data="{field:'id',width:'10px'}">序号</th>
-	      <th lay-data="{field:'stage0',width:'100px'}">阶段</th>
-	       <th lay-data="{field:'insproject',width:'50px'}">检讨项目</th>
-	      <th lay-data="{field:'item',width:'50px'}">错误</th>
-	      <th lay-data="{field:'items',width:'50px'}">错误点</th>
-	      <th lay-data="{field:'problems',width:'50px'}">不良问题点</th>
-	      <th lay-data="{field:'ng',width:'50px'}">不良数</th>
-	      <th lay-data="{field:'defectlevels',width:'50px'}">缺陷等级</th>
-	      <th lay-data="{field:'reason',width:'50px'}">原因分析</th>
-	      <th lay-data="{field:'measures',width:'50px'}">改善对策</th>
-	      <th lay-data="{field:'exhibitor',width:'50px'}">提出人</th>
-	      <th lay-data="{field:'head',width:'50px'}">责任人</th>
-	      <th lay-data="{field:'plantime',width:'50px'}">计划时间</th>
-	      <th lay-data="{field:'finishtime',width:'50px'}">完成时间</th>
-	      <th lay-data="{field:'confirm',width:'50px'}">效果确认</th>
-	      <th lay-data="{field:'affect',width:'50px'}">成本影响</th>
-	      <th lay-data="{field:'comment',width:'50px'}">备注</th>
-	      <th lay-data="{field:'caozuo',width:'50px'}">操作</th>
+	   	  <th ><input type="checkbox" name="checkall" onclick="swapCheck()" ></th>
+	      <th >序号</th>
+	      <th >阶段</th>
+	       <th>检讨项目</th>
+	      <th>错误</th>
+	      <th>错误点</th>
+	      <th>不良问题点</th>
+	      <th>不良数</th>
+	      <th>缺陷等级</th>
+	      <th>原因分析</th>
+	      <th>改善对策</th>
+	      <th>提出人</th>
+	      <th>责任人</th>
+	      <th>计划时间</th>
+	      <th>完成时间</th>
+	      <th>效果确认</th>
+	      <th>成本影响</th>
+	      <th>备注</th>
+	      <th>PM备注</th>
+	      <th>操作</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	   <c:forEach items="${allmessageslist}" var="item" varStatus="status"> 
 	  	<tr>
+	  		<td><input type="checkbox" name="check" /></td>
 	  	<td>${status.index+1}</td>
 	  	<td>${item.stage0} &nbsp; ${item.stage} </td>
 	  	<td>${item.insproject}</td>
@@ -81,6 +87,7 @@
 	  	<td>${item.confirm}</td>
 	  	<td>${item.affect}</td>
 	  	<td>${item.comment}</td>
+	  	<td>${item.pmcomm}</td>
 	  	<td>
 	  	  <a href="/npi.test/ITEM_DoItemMain?aid=${item.id}">改善对策</a> <br/>
 	  	  <a href="/npi.test/ITEM_DoItemMain?eid=${item.id}">${exhibitor}</a>  <br/>
@@ -94,6 +101,23 @@
 		</form>
 		<script src="js/layui.all.js" charset="utf-8"></script>
 	    <script src="js/jquery.js" charset="utf-8"></script>
+	    	 <script type="text/javascript">  
+        //checkbox 全选/取消全选  
+        var isCheckAll = false;  
+        function swapCheck() {  
+            if (isCheckAll) {  
+                $("input[type='checkbox']").each(function() {  
+                    this.checked = false;  
+                });  
+                isCheckAll = false;  
+            } else {  
+                $("input[type='checkbox']").each(function() {  
+                    this.checked = true;  
+                });  
+                isCheckAll = true;  
+            }  
+        }  
+    </script>  
 	    <script >
 		    function calc(){
 			    a = document.getElementById("number").value;
