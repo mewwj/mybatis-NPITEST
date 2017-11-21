@@ -116,4 +116,12 @@
   <insert id="insertitemcomm" parameterType="pojo.AllHead" >
      UPDATE NPI_ALL_messages SET pmcomm = #{pmcomm} WHERE id= #{id} 
   </insert>
+  <!-- 根据ID导出信息 -->
+  <select id="selectexportmessages" resultMap="AllItemsResultMap" >
+           SELECT * from [dbo].[NPI_ALL_messages] WHERE ID in(
+      <foreach collection="list" item="item" separator=",">
+        #{item}
+      </foreach>
+    )
+  </select>
  </mapper>

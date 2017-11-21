@@ -267,6 +267,25 @@ public class ItemsDao {
 		}	
 		
 	}
+
+	public List<AllItems> selectexportmessages(List<Integer> idslist) {
+		DBAccess dbAccess=new DBAccess();
+       	SqlSession sqlSession=null;
+       	List<AllItems> allmsglist=new ArrayList<AllItems>();
+    	try {
+			sqlSession=dbAccess.getSqlSession();
+			Iitems iitems=sqlSession.getMapper(Iitems.class);
+			allmsglist=iitems.selectexportmessages(idslist);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if(sqlSession!=null){
+				sqlSession.close();
+			}
+		}	
+    	return allmsglist;
+	}
 	
 
 

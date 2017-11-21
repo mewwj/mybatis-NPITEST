@@ -36,5 +36,7 @@ public interface Iitems {
 
 	void insertitemcomm(@Param("pmcomm")String pmcomm,@Param("id")Integer id);
 
+	List<AllItems> selectexportmessages(List<Integer> idslist);
+
 
 }

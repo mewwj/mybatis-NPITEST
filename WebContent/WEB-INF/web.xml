@@ -280,4 +280,24 @@
     <servlet-name>ITEM_DoItemCommInsert</servlet-name>
     <url-pattern>/ITEM_DoItemCommInsert</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcelExport</display-name>
+    <servlet-name>ExcelExport</servlet-name>
+    <servlet-class>Servlet.ExcelExport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelExport</servlet-name>
+    <url-pattern>/ExcelExport</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcelExportServlet</display-name>
+    <servlet-name>ExcelExportServlet</servlet-name>
+    <servlet-class>Servlet.ExcelExportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelExportServlet</servlet-name>
+    <url-pattern>/ExcelExportServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

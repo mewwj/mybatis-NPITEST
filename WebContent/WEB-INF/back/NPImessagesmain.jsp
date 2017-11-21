@@ -29,23 +29,23 @@
 		</div>
 		
 		<br />
-		<form action="/npi.test/HEAD_DoHeadMain" id="mainheadform" method="post">
+		<form action="/npi.test/ExcelExportServlet" id="mainheadform" method="post">
 		<!-- 表格 -->
 			<div style="margin-left:5cm;padding-top: 1cm; font-size: 15px; ">
 				 客户名称：${allmessagescusname}
 				 专案名称：${allmessagesproname}
 				  	<div style="padding-right: 20px; width: 10%;margin-left:80% ;">
-				  		<button class="layui-btn layui-btn-sm">导出</button>
+				  		<input type="submit" class="layui-btn layui-btn-sm" value="导出">
 				  	</div>
 			</div>
 	 	<div  style="margin-left:5%; width:90%;">
 	     <table class="layui-table">
 	     <thead>
 	   		 <tr>
-	   	  <th ><input type="checkbox" name="checkall" onclick="swapCheck()" ></th>
-	      <th >序号</th>
-	      <th >阶段</th>
-	       <th>检讨项目</th>
+	   	  <th><input type="checkbox" name="checkall" onclick="swapCheck()" ></th>
+	      <th>序号</th>
+	      <th>阶段</th>
+	      <th>检讨项目</th>
 	      <th>错误</th>
 	      <th>错误点</th>
 	      <th>不良问题点</th>
@@ -67,7 +67,7 @@
 	  <tbody>
 	   <c:forEach items="${allmessageslist}" var="item" varStatus="status"> 
 	  	<tr>
-	  		<td><input type="checkbox" name="check" /></td>
+	  	<td><input type="checkbox" name="check" value="${item.id}"/></td>
 	  	<td>${status.index+1}</td>
 	  	<td>${item.stage0} &nbsp; ${item.stage} </td>
 	  	<td>${item.insproject}</td>

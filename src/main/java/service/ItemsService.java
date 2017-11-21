@@ -79,4 +79,9 @@ public class ItemsService {
 		itemsdao.insertitemcomm(pmcomm,id);
 	}
 
+	public List<AllItems> selectexportmessages(List<Integer> idslist) {
+		ItemsDao itemsdao=new ItemsDao();
+		return itemsdao.selectexportmessages(idslist);
+	}
+
 }

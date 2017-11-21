@@ -22,8 +22,6 @@ public class ITEM_DoItemMain2 extends HttpServlet {
          String did=request.getParameter("did");
          String[] deleteid=request.getParameterValues("checkbox"); 
          try {
-			
-		
          if(deleteid.length>0) {
         	  List<Integer> dellist =new ArrayList<Integer>();
         	  for (String a : deleteid) {

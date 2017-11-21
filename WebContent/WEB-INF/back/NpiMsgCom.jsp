@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
-        <legend style="margin-left:120px; font-size:30px; ">效果确认</legend>
+        <legend style="margin-left:120px; font-size:30px; ">添加备注</legend>
         </fieldset>
         <c:forEach items="${oneitemlist}" var="item" varStatus="status">
         	<div style="width: 100%; float: left;padding-bottom: 60px;">
