@@ -18,7 +18,7 @@ public class LIST_ToListServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    	request.setAttribute("countdesignaspectlist", 15);
+	    	  request.setAttribute("countdesignaspectlist", 11);
 		//软件方面
 		request.setAttribute("softwaredesignaspectlist", 2);
 		//工艺方面

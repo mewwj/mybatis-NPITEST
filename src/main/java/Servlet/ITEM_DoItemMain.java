@@ -20,6 +20,8 @@ public class ITEM_DoItemMain extends HttpServlet {
                     String uid=request.getParameter("aid");//获取更新id，
                     String did=request.getParameter("did");//删除id
                     String eid=request.getParameter("eid");//提出人信息
+                    
+                   
                     if(uid!=null) {
                     	int id=Integer.valueOf(uid);
                     	ItemsService itemsservice=new ItemsService();
@@ -38,8 +40,10 @@ public class ITEM_DoItemMain extends HttpServlet {
                     	 String filenamea=itemsservice.selectonefilename(id);
                     	 String filenameb=itemsservice.selectonefilenameb(id);
                     	 if(filenamea!=null||filenameb!=null) {
-                    	 StringBuilder filea = new StringBuilder("D:/workspace/workspace/npi.test/WebContent/images/");
-                    	 StringBuilder fileb = new StringBuilder("D:/workspace/workspace/npi.test/WebContent/images/");
+                    		 String filepath=request.getSession().getServletContext().getRealPath("/")+"images";
+                    	System.out.println(filepath);
+                    		 StringBuilder filea = new StringBuilder(filepath);
+                    	 StringBuilder fileb = new StringBuilder(filepath);
                     	   filea.append(filenamea);
                     	   fileb.append(filenameb);
                     	   String file1=filea.toString();

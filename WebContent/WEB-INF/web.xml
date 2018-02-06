@@ -300,4 +300,54 @@
     <servlet-name>ExcelExportServlet</servlet-name>
     <url-pattern>/ExcelExportServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ToZhuanAnXinXi</display-name>
+    <servlet-name>ToZhuanAnXinXi</servlet-name>
+    <servlet-class>Servlet.ToZhuanAnXinXi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ToZhuanAnXinXi</servlet-name>
+    <url-pattern>/ToZhuanAnXinXi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShaiXuanCuoWuDianServlet</display-name>
+    <servlet-name>ShaiXuanCuoWuDianServlet</servlet-name>
+    <servlet-class>Servlet.ShaiXuanCuoWuDianServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShaiXuanCuoWuDianServlet</servlet-name>
+    <url-pattern>/ShaiXuanCuoWuDianServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SouSuoZhuanAnXinXiServlet</display-name>
+    <servlet-name>SouSuoZhuanAnXinXiServlet</servlet-name>
+    <servlet-class>Servlet.SouSuoZhuanAnXinXiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SouSuoZhuanAnXinXiServlet</servlet-name>
+    <url-pattern>/SouSuoZhuanAnXinXiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ToChaKanZhuanAnXinXiServlet</display-name>
+    <servlet-name>ToChaKanZhuanAnXinXiServlet</servlet-name>
+    <servlet-class>Servlet.ToChaKanZhuanAnXinXiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ToChaKanZhuanAnXinXiServlet</servlet-name>
+    <url-pattern>/ToChaKanZhuanAnXinXiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ITEM_XiaoGuoQueRen</display-name>
+    <servlet-name>ITEM_XiaoGuoQueRen</servlet-name>
+    <servlet-class>Servlet.ITEM_XiaoGuoQueRen</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ITEM_XiaoGuoQueRen</servlet-name>
+    <url-pattern>/ITEM_XiaoGuoQueRen</url-pattern>
+  </servlet-mapping>
 </web-app>

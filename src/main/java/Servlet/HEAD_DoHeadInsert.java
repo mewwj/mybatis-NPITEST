@@ -21,18 +21,16 @@ public class HEAD_DoHeadInsert extends HttpServlet {
     public HEAD_DoHeadInsert() {
         super();
     }
-
+      //添加专案信息
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				try {
 				
-					
 				String stage0=request.getParameter("province");
 				String stage=request.getParameter("stage");
 				String cusname=request.getParameter("cusname");
 				String proname=request.getParameter("proname");
 				String modeltype=request.getParameter("modeltype");
 				String trystage=request.getParameter("stage1");
-				System.out.println(trystage);
 				String trydate=request.getParameter("trydate");
 				String trytime=request.getParameter("trytime");
 				String team=request.getParameter("team");
@@ -61,7 +59,6 @@ public class HEAD_DoHeadInsert extends HttpServlet {
 				headlist.add(allhead);
 				HeadService headservice=new HeadService();
 				headservice.insertheaditems(headlist);
-				
 				} finally {
 					// TODO: handle finally clause
 					request.getRequestDispatcher("/HEAD_ToHeadMain").forward(request, response);	
@@ -69,7 +66,6 @@ public class HEAD_DoHeadInsert extends HttpServlet {
 				
 	}
 	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -1,0 +1,22 @@
+li{
+	float: left;
+	 margin-right: 16px;
+	 margin-bottom: 4px;
+	 height: 26px;
+	line-height: 26px;
+	list-style: none;
+	}
+
+.itemize{
+	height: 100%;
+ border-bottom: dotted #CCCCCC 1.2px; 	
+ }
+.upblock{
+	height: 200px;
+}
+div{
+	border: solid  #CCCCCC 1px;
+}
+.diyihang,.dierhang{
+	height: 30px;
+}

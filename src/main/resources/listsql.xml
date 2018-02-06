@@ -31,7 +31,7 @@
 		     <result column="filenamea" jdbcType="VARCHAR" property="filenamea"/>
 		     <result column="filenameb" jdbcType="VARCHAR" property="filenameb"/>
 		    </resultMap>
-	<select id="countdesignaspect" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="countdesignaspect" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -39,7 +39,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="technologicalaspects" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="technologicalaspects" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'工艺方面'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -47,7 +47,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="operationaspects" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="operationaspects" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'作业方面'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -55,7 +55,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="incomingmaterialslaspects" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="incomingmaterialslaspects" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'来料方面'
 	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -63,7 +63,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="customeraspects" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="customeraspects" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'客户方面'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -71,7 +71,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="softwaredesignaspect" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="softwaredesignaspect" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'软件方面'
 	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -79,7 +79,7 @@
      	<if test="stage0!=null and!&quot;&quot;.equals(stage0.trim())"> and stage0 =#{stage0}</if>
       	<if test="stage!=null and!&quot;&quot;.equals(stage.trim())"> and stage =#{stage}</if>
 	</select>
-	<select id="otheraspects" resultType="int"  parameterType="java.lang.Integer">   
+	<select id="otheraspects" resultType="java.lang.Integer"  parameterType="java.lang.String">   
 	  SELECT COUNT(insproject) FROM [dbo].[NPI_ALL_messages] where insproject=N'其他方面'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
@@ -125,7 +125,7 @@
 	</select>
 	<!-- 设计 喇叭  SOUNDBAR -->
 	<select id="designhornsoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
-	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分' and items='Soundbar'
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
       	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
@@ -134,7 +134,7 @@
 	</select>
 	<!-- 设计 喇叭  WOOFER --> 
 	<select id="designhornwoofer" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
-	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分' and items='WOOFER'
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'喇叭部分' 
 	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
       	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
@@ -143,7 +143,7 @@
 	</select>
 	<!-- 设计 包装  SOUNDBAR -->
 	<select id="designpacksoundbar" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
-	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分' and items='Soundbar'
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分' 
 	   <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
       	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>
@@ -152,7 +152,7 @@
 	</select>
 	<!-- 设计 包装  WOOFER --> 
 	<select id="designpackwooferr" parameterType="pojo.AllItems" resultMap="ItemsResultMap">
-	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分' and items='WOOFER'
+	  SELECT * FROM [dbo].[NPI_ALL_messages] where insproject=N'设计方面' and item=N'包装部分'
 	    <if test="cusname!=null and!&quot;&quot;.equals(cusname.trim())"> and cusname=#{cusname} </if>
       	<if test="proname!=null and!&quot;&quot;.equals(proname.trim())"> and proname=#{proname}</if>
       	<if test="modeltype!=null and!&quot;&quot;.equals(modeltype.trim())"> and modeltype =#{modeltype}</if>

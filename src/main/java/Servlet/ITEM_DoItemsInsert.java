@@ -23,8 +23,7 @@ public class ITEM_DoItemsInsert extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.setCharacterEncoding("UTF-8");
-		String filePath = "D:/workspace/workspace/npi.test/WebContent/images";
+		String filePath = request.getSession().getServletContext().getRealPath("/")+"images";
 		File file = new File(filePath);
 		if(!file.exists()){
 			file.mkdir();
@@ -43,39 +42,33 @@ public class ITEM_DoItemsInsert extends HttpServlet {
 			su.setDeniedFilesList("rar,jsp,js,text");
 			//上传文件
 			su.upload();
-			
 			int count = su.save(filePath);
 			System.out.println("上传成功" +  count + "个文件！");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(su.getFiles().getCount());
-		for(int i =0; i < su.getFiles().getCount(); i++){
-			com.jspsmart.upload.File tempFile = su.getFiles().getFile(i);
-			System.out.println("---------------------------");
-			System.out.println("表单当中name属性值：" + tempFile.getFieldName());
-			System.out.println("上传文件名：" + tempFile.getFieldName());
-			System.out.println("上传文件长度:" + tempFile.getSize());
-			System.out.println("上传文件的拓展名：" + tempFile.getFileExt());
-			System.out.println("上传文件的全名：" + tempFile.getFilePathName());
-			System.out.println("---------------------------");
+			System.out.println(su.getFiles().getCount());
+			for(int i =0; i < su.getFiles().getCount(); i++){
+				com.jspsmart.upload.File tempFile = su.getFiles().getFile(i);
+				System.out.println("---------------------------");
+				System.out.println("表单当中name属性值：" + tempFile.getFieldName());
+				System.out.println("上传文件名：" + tempFile.getFieldName());
+				System.out.println("上传文件长度:" + tempFile.getSize());
+				System.out.println("上传文件的拓展名：" + tempFile.getFileExt());
+				System.out.println("上传文件的全名：" + tempFile.getFilePathName());
+				System.out.println("---------------------------");
 		}
 		
-		try {
-			
 			for(int i=0;i<100;i++){
 				String filenamea=su.getFiles().getFile(i).getFileName();
-				String cusname=su.getRequest().getParameter("cusname");
-				String proname=su.getRequest().getParameter("proname");
+				String cusname=new String(su.getRequest().getParameter("cusname").getBytes(),"gbk");
+				String proname=new String(su.getRequest().getParameter("proname").getBytes(),"gbk");
 				String stage0=su.getRequest().getParameter("stage0");
 				String stage=su.getRequest().getParameter("stage");
-				String insproject=su.getRequest().getParameter("insproject"+i);
-				String item=su.getRequest().getParameter("item"+i);
-				String items=su.getRequest().getParameter("items"+i);
-				String problems=su.getRequest().getParameter("problems"+i);
+				String insproject=new String(su.getRequest().getParameter("insproject").getBytes(),"gbk");
+				String item=new String(su.getRequest().getParameter("item").getBytes(),"gbk");
+				String items=new String(su.getRequest().getParameter("items").getBytes(),"gbk");
+				String problems=new String(su.getRequest().getParameter("problems"+i).getBytes(),"gbk");
 				String ng=su.getRequest().getParameter("ng"+i);
-				String defectlevels=su.getRequest().getParameter("defectlevels"+i);
-				String exhibitor=su.getRequest().getParameter("exhibitor"+i);
+				String defectlevels=new String(su.getRequest().getParameter("defectlevels"+i).getBytes(),"gbk");
+				String exhibitor=new String(su.getRequest().getParameter("exhibitor"+i).getBytes(),"gbk");
 				String plantime=su.getRequest().getParameter("plantime"+i);
 				List<AllItems> itemsinsertalist=new ArrayList<AllItems>();
 				AllItems allitems=new AllItems();
@@ -95,9 +88,7 @@ public class ITEM_DoItemsInsert extends HttpServlet {
 				itemsinsertalist.add(allitems);
 				ItemsService itemsservice=new ItemsService();
 				itemsservice.insertitemsa(itemsinsertalist);
-				System.out.println("添加成功");
 			}
-			
 		}  catch (Exception e) {
 			e.printStackTrace();
 		} finally {

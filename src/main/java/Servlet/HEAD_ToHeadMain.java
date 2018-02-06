@@ -1,5 +1,4 @@
 package Servlet;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import pojo.AllHead;
 import service.HeadService;
 
+/**
+ * @author wenjiewang
+ *  去往表头信息的展示界面
+ */
 public class HEAD_ToHeadMain extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public HEAD_ToHeadMain() {
         super();
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				             	String cusname=null;
 				             	String proname=null;
 				             	String stage0=null;

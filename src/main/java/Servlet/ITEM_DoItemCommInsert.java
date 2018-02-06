@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.ItemsService;
 
+/**
+ * @author wenjiewang
+ *   插入备注的servlet
+ */
 public class ITEM_DoItemCommInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -19,7 +23,7 @@ public class ITEM_DoItemCommInsert extends HttpServlet {
 				request.setCharacterEncoding("utf-8");
            String pmcomm=request.getParameter("pmcomm");	
            String aid=request.getParameter("id");   //message的id，根据id 插入PM备注
-           String zid=request.getParameter("zid");
+           String zid=request.getParameter("zid");   
            System.out.println("pmcomm"+pmcomm);
            if(pmcomm!=null){
         	   int id=Integer.valueOf(aid);

@@ -17,10 +17,10 @@ import com.jspsmart.upload.SmartUpload;
 import pojo.AllItems;
 import service.ItemsService;
 
-public class ITEM_DoItemsUpdate extends HttpServlet {
+public class ITEM_XiaoGuoQueRen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ITEM_DoItemsUpdate() {
+    public ITEM_XiaoGuoQueRen() {
         super();
     }
 
@@ -63,12 +63,12 @@ public class ITEM_DoItemsUpdate extends HttpServlet {
 		}
 		String stage0=su.getRequest().getParameter("province");
 		String stage=su.getRequest().getParameter("stage");
-		String reasons=new String(su.getRequest().getParameter("reasons").getBytes(),"gbk");
-		String measures=new String(su.getRequest().getParameter("measures").getBytes(),"gbk");
-		String head=new String(su.getRequest().getParameter("head").getBytes(),"gbk");
-		String confirm=su.getRequest().getParameter("confirm");
-		String affect=su.getRequest().getParameter("affect");
-		String comment=su.getRequest().getParameter("comment");
+		String reasons=su.getRequest().getParameter("reasons");
+		String measures=su.getRequest().getParameter("measures");
+		String head=su.getRequest().getParameter("head");
+		String confirm=new String(su.getRequest().getParameter("confirm").getBytes(),"gbk");
+		String affect=new String(su.getRequest().getParameter("affect").getBytes(),"gbk");
+		String comment=new String(su.getRequest().getParameter("comment").getBytes(),"gbk");
 		String id1=su.getRequest().getParameter("id");
 		int id=Integer.valueOf(id1);
 		 Date date = new Date();
@@ -112,7 +112,7 @@ public class ITEM_DoItemsUpdate extends HttpServlet {
 		   request.setAttribute("allmessageslist",itemsservice.amessageslist(cusname,proname,stage0,stage));
 		   request.setAttribute("allmessagescusname",cusname); 
 		   request.setAttribute("allmessagesproname",proname);
-		   request.getRequestDispatcher("WEB-INF/back/NPImessagesmain.jsp").forward(request, response);
+		   request.getRequestDispatcher("WEB-INF/xiaoguoqueren/chakanjiantaoxinxi.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

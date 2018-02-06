@@ -29,6 +29,7 @@ public class ITEM_ToNoConfirmMsg extends HttpServlet {
 					allhead.setStage(stage);
 					if(cusname!=null||proname!=null||stage0!=null||stage!=null) {
 					ItemsService  itemservice =new ItemsService();
+					request.setAttribute("exhibitor","效果确认");
 					request.setAttribute("noconfirmmsg",itemservice.selectnoconfirmmsg(cusname,proname,stage0,stage));  
 					request.getRequestDispatcher("/WEB-INF/back/NoConfirmmeg.jsp").forward(request, response);
 					}else {

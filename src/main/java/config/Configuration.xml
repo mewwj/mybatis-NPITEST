@@ -39,9 +39,9 @@
       </transactionManager>
       <dataSource type="POOLED">
         <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://localhost:1433;DatabaseName=npi"/>
+        <property name="url" value="jdbc:sqlserver://192.168.50.41;DatabaseName=zyluxinfo"/>
         <property name="username" value="sa"/>
-          <property name="password" value="123456"/>
+          <property name="password" value="yangfish7981"/>
       </dataSource>
     </environment>
   </environments>

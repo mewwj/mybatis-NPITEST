@@ -21,24 +21,8 @@ public class ITEM_DoItemMain2 extends HttpServlet {
 		 String uid=request.getParameter("aid");
          String did=request.getParameter("did");
          String[] deleteid=request.getParameterValues("checkbox"); 
-         try {
-         if(deleteid.length>0) {
-        	  List<Integer> dellist =new ArrayList<Integer>();
-        	  for (String a : deleteid) {
-				   int b=Integer.valueOf(a);
-				   dellist.add(b);
-			  }
-        	  System.out.println(dellist.size());
-        	  ItemsService itemsservice=new ItemsService();
-          	 itemsservice.deletebatchitems(dellist);
-          	request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
-         }else {
-        	 request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
-         }
-         } catch (Exception e) {
-        	 request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
- 		}
          
+         System.out.println("uid"+uid);
          
          if(uid!=null) {
          	int id=Integer.valueOf(uid);
@@ -52,8 +36,9 @@ public class ITEM_DoItemMain2 extends HttpServlet {
          	 String filenamea=itemsservice.selectonefilename(id);
          	 String filenameb=itemsservice.selectonefilenameb(id);
          	 if(filenamea!=null||filenameb!=null) {
-         	 StringBuilder filea = new StringBuilder("D:/workspace/workspace/npi.test/WebContent/images/");
-         	 StringBuilder fileb = new StringBuilder("D:/workspace/workspace/npi.test/WebContent/images/");
+         		 String filepath=request.getSession().getServletContext().getRealPath("/")+"images";
+         	 StringBuilder filea = new StringBuilder(filepath);
+         	 StringBuilder fileb = new StringBuilder(filepath);
          	   filea.append(filenamea);
          	   fileb.append(filenameb);
          	   String file1=filea.toString();
@@ -65,8 +50,23 @@ public class ITEM_DoItemMain2 extends HttpServlet {
          	 itemsservice.deleteoneitem(id);
          	 request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
          }
+         try {
+        	 if(deleteid != null) {
+        		 List<Integer> dellist =new ArrayList<Integer>();
+        		 for (String a : deleteid) {
+        			 int b=Integer.valueOf(a);
+        			 dellist.add(b);
+        		 }
+        		 System.out.println(dellist.size());
+        		 ItemsService itemsservice=new ItemsService();
+        		 itemsservice.deletebatchitems(dellist);
+        		 request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
+        	 }
+         } catch (Exception e) {
+        	 System.out.println(e);
+        	 request.getRequestDispatcher("/ITEM_ToItemsMain2").forward(request, response);
+         }
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

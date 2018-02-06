@@ -1,34 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<html>
 	<head>
- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>信息添加</title>
-  <meta name="renderer" content="webkit">
-  <link rel="stylesheet" href="css/layui.css"  media="all">
-    <link rel="stylesheet" href="css/modules/laydate/default/laydate.css" />
-    <style>
-    	.error{
-    		color: red;
-    	}
-    </style>
-  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
-</head>
-<body>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px; ;">
-  <legend style="margin-left: 100px">检讨项目信息</legend>
-</fieldset>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<title>信息展示</title>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/search.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/bootstrapValidator.css" />
+		<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" href="css/timepicker.less" />
+		<link rel="stylesheet" href="css/bootstrap-timepicker.css" />
+		    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    	<!--[if lt IE 7]>
+	      <script src="https://cdn.bootcss.com/html5shiv/r23/html5.js"></script>
+	      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+	       <![endif]-->
+<style type="text/css">
+			div{
+	border:none;
+  }
+table {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-collapse: collapse;
+}
+th,td{
+	padding: 10px;
+	border: solid #666666 1px;
+	background-color: #ffffff;
+}
+</style>
+	</head>
+	<body> 
+	     <!-- NPI表头维护界面 -->     
+	<div class="page-header">
+	  		<h1>检讨信息<small style="color: #28A4C9;">添加检讨信息</small></h1>
+	</div>
  
-<form  action="/npi.test/ITEM_DoItemsInsert" method="post" name="form1" id="form1" enctype="multipart/form-data">
-<div class="layui-form-item">
-  	<div class="layui-inline">
-    <label class="layui-form-label">客户名称</label>
-    <div class="layui-input-block">
-      <input type="text" name="cusname" id="cusname"  class="layui-input">
-    </div>
-  </div>
-</div>
+<form  action="/npi.test/ITEM_DoItemsInsert" class="form-horizontal required-validate"
+	        role="form" method="post" name="form1" id="form1" enctype="multipart/form-data">
+	        
+	<div class="form-group">
+	    <label for="InputCusname" class="col-sm-1 control-label">客户名称</label>
+	    <div class="col-sm-3">
+	    <input type="text" name="cusname" class="form-control" id="InputCusname" placeholder="客户名称">
+	    </div>
+  	</div>
+  	<div class="form-group">
+	    <label for="InputProname" class="col-sm-1 control-label">专案名称</label>
+	    <div class="col-sm-3">
+	    <input type="text" name="proname" class="form-control" id="proname" placeholder="专案名称">
+	    </div>
+  	</div>
+  	<div class="form-group">
+	    <label for="InputProname" class="col-sm-1 control-label">专案名称</label>
+	    <div class="col-sm-3">
+	    <input type="text" name="proname" class="form-control" id="proname" placeholder="专案名称">
+	    </div>
+  	</div>
+  	
+
   <div class="layui-form-item">
   	<div class="layui-inline">
     <label class="layui-form-label">专案名称</label>
@@ -36,6 +71,8 @@
       <input type="text" name="proname"  id="proname" class="layui-input">
     </div>
   </div>
+  </div>
+ 
   <div class="layui-form-item">
 			    <label class="layui-form-label">选择阶段</label>
 			    <div class="layui-input-inline">
@@ -49,12 +86,13 @@
 			    	</select>	 
 			    </div>
 			  </div>
-  </div>
+   
+   
    <div class="layui-form-item">
   	<div class="layui-inline">
     <label class="layui-form-label">检讨项目</label>
     <div class="layui-input-block">
-      <input type="text" name="insproject" id="insproject" lay-verify="required"   class="layui-input">
+      <input type="text" name="insproject" id="insproject"    class="layui-input">
     </div>
   </div>
   </div>
@@ -62,7 +100,7 @@
   	<div class="layui-inline">
     <label class="layui-form-label">问题</label>
     <div class="layui-input-block">
-      <input type="text" name="item" id ="item" lay-verify="required"   class="layui-input">
+      <input type="text" name="item" id ="item"    class="layui-input">
     </div>
   </div>
   </div>
@@ -79,7 +117,7 @@
     <label class="layui-form-label">不良问题点</label>
     <div class="layui-input-block">
       <input type="text" name="problems" id="problems" class="layui-input">
-               请选择图片：<input id="pic" name="pic" type="file" />
+               图片：<input id="pic" name="pic" type="file" />
     </div>
   </div>
   </div>
@@ -126,7 +164,7 @@
 
 	<script src="js/layui.all.js" charset="utf-8"></script>
 	<script src="js/jquery.js"></script>      
-	<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+	<script type="text/javascript" src="js/jquery.js" ></script>
 	<script type="text/javascript" src="js/jquery.validate.js" ></script>
 	<script>
 		$().ready(function() {

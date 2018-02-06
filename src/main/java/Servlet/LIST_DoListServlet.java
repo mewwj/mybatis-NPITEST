@@ -51,7 +51,9 @@ public class LIST_DoListServlet extends HttpServlet {
 			//设计方面数目
 		    int countdesignaspectlist=0;
 		    countdesignaspectlist=listservice.countdesignaspect(cusname,proname,modeltype,stage0,stage);
-		    	request.setAttribute("countdesignaspectlist", countdesignaspectlist+15);
+		    System.out.println("countdesignaspectlist"+countdesignaspectlist);
+		    	
+		    request.setAttribute("countdesignaspectlist", countdesignaspectlist+11);
 			//软件方面
 			int softwaredesignaspectlist=0;
 			softwaredesignaspectlist=listservice.softwaredesignaspect(cusname,proname,modeltype,stage0,stage);
@@ -121,7 +123,7 @@ public class LIST_DoListServlet extends HttpServlet {
 			//其他方面，woofer
 			request.setAttribute("othwooferlist", listservice.othwoofer(cusname,proname,modeltype,stage0,stage));
 			
-		request.getRequestDispatcher("/LIST_ToListServlet").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/front/HeadList.jsp").forward(request, response);
 	
 	}
 

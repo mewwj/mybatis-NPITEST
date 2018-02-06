@@ -1,21 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"  pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 		<title></title>
 		<link rel="stylesheet" href="css/layui.css"  media="all">
-  <link rel="stylesheet" href="css/modules/laydate/default/laydate.css" />
-  
-  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
-	</head>
+ 		 <link rel="stylesheet" href="css/modules/laydate/default/laydate.css" />
+ 		 	    	<!--[if lt IE 7]>
+	      <script src="https://cdn.bootcss.com/html5shiv/r23/html5.js"></script>
+	      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+	       <![endif]-->
+		</head>
 	<body>
-     <!-- NPI表头维护界面 -->     
-	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
-	  <legend>表头数据更新</legend>
-	</fieldset>
+  	<table border='0' cellpadding='0' cellspacing='0'width="98%" style="margin-left:2px;margin-right:2px;" align='center'>                         
+        <tr>
+            <td height='27px'  style="border-bottom:3px solid #000000;"><b>當前位置：</b>產品設計改善報告  > 专案信息更新</td>
+            <td align='right' style=""><font color="red"></font></td>
+        </tr>
+        <tr><td height='5px' colspan='2' ></td></tr>
+    </table>
 	<!--  action="/npi.test/HEAD_DoHeadInsert"-->
 	      	<form  name="form1" action="/npi.test/HEAD_DoHeadUpdate" >
 	      	     
@@ -61,7 +65,6 @@
 			  <div class="layui-input-block">
 			  <input type="text" value="${item.trydate}" id="trydate" name="trydate" class="layui-input" style="width: 300px;">
 			  </div>
-			  </br>
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">试产时间</label>
 			    <div class="layui-input-block">
